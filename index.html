@@ -10,14 +10,45 @@
 
     
 <script>
-// 设置定时器，5秒后触发提示
-setTimeout(function() {
-    // 使用alert弹出提示框
-    if (alert("您的在线时长以达到10分钟，孟轩官网将对您进行视力保护")) {
-        // 如果用户点击确定，跳转到指定的URL
-        window.location.href = "https://tmx315.github.io/tmx022/";
+// 设置定时器
+let initialTimer = null;
+let autoRedirectTimer = null;
+
+function resetInitialTimer() {
+    // 清除现有的初始定时器
+    if (initialTimer) {
+        clearTimeout(initialTimer);
     }
-}, 600000); // 600000
+    // 重新设置5分钟后的初始定时器
+    initialTimer = setTimeout(function() {
+        // 弹出对话框
+        let userChoice = confirm("亲爱的用户您好！孟轩官网后台机器人检测到您在此界面5分钟了，为了保护您的眼睛，您可选择是否开启保护？");
+        if (userChoice) {
+            // 用户点击确定，立即跳转
+            window.location.href = "https://tmx315.github.io/tmx022/"; // 这里替换成你想要跳转的网址
+        } else {
+            // 用户点击取消，设置10秒后自动跳转
+            autoRedirectTimer = setTimeout(function() {
+                window.location.href = "https://tmx315.github.io/tmx019/"; // 同上
+            }, 0); // 10秒 = 10000毫秒
+        }
+    }, 300000); // 5分钟 = 300000毫秒
+}
+
+window.onload = function() {
+    // 立即开始5分钟计时
+    resetInitialTimer();
+};
+
+// 清除自动跳转定时器
+window.onbeforeunload = function() {
+    if (autoRedirectTimer) {
+        clearTimeout(autoRedirectTimer);
+    }
+    if (initialTimer) {
+        clearTimeout(initialTimer);
+    }
+};
 </script>
 
     
