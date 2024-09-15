@@ -51,14 +51,6 @@ window.onbeforeunload = function() {
 };
 </script>
 
-    <script>
-// 强制阻止未保存更改提示
-window.onbeforeunload = function(event) {
-    // 通过返回一个字符串，可以触发浏览器显示提示
-    // 要阻止提示，可以不返回任何内容或者返回一个空字符串
-    return;
-};
-</script>
 
     <script>
 
@@ -79,14 +71,7 @@ document.addEventListener('keydown', function(e){
 }, false);
 
 </script>
-<script>
 
-// 禁用保存网页
-window.onbeforeunload = function() {
-    return "警告：不要尝试保存此页面！";
-};
-
-</script>
 <script>
 
 // 禁用检查元素功能
