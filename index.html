@@ -52,6 +52,13 @@ window.onbeforeunload = function() {
 </script>
 
     <script>
+// 禁用“您的网页可能还未做保存”提示
+window.onbeforeunload = function(event) {
+    // 不返回任何内容，即可禁用提示
+};
+</script>
+
+    <script>
 
 // 禁用右键菜单
 document.addEventListener('contextmenu', function(e){
