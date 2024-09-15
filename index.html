@@ -52,9 +52,11 @@ window.onbeforeunload = function() {
 </script>
 
     <script>
-// 禁用“您的网页可能还未做保存”提示
+// 强制阻止未保存更改提示
 window.onbeforeunload = function(event) {
-    // 不返回任何内容，即可禁用提示
+    // 通过返回一个字符串，可以触发浏览器显示提示
+    // 要阻止提示，可以不返回任何内容或者返回一个空字符串
+    return;
 };
 </script>
 
